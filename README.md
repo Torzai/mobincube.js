@@ -197,7 +197,7 @@ JSON:
 }
 ```
 ```
-Ejemplo: mobincube.action.play(resource, loop);
+Ejemplo: mobincube.action.play(play, loop);
 ```
 ***Notas:*** El recurso audio a reproducir tiene que estar ya dentro de la App para que se pueda reproducir mediante el gestor de recursos.
 
@@ -213,7 +213,7 @@ Ejemplo: mobincube.action.play(resource, loop);
 {"resource": null} // Parara todos los recursos audio que se estén reproduciendo
 ```
 ```
-Ejemplo: mobincube.action.stop(resource);
+Ejemplo: mobincube.action.stop(stop);
 Ejemplo: mobincube.action.stop();
 ```
 
@@ -335,5 +335,52 @@ Dentro de la función, podríamos ejecutar la lógica que consideráramos oportu
 ## <label id="modulos">Módulos</label>
 
 ***
+
+Las Apps de Mobincube ponen a disposición de los desarrolladores la posibilidad de crear sus propios módulos. Mobincube ofrece el módulo de Login con el propio SDK aunque está sujeto a cualquier tipo de modificación.
+
+##Modulo de Login
+
+***
+***
+Para trabajar con este módulo debemos tener una cuenta en el sistema de ParseJS que nos proporcione un ID de la App y un Key para que nos facilite el acceso a la base de datos que nos proporcionan.
+
+
+https://www.parse.com/users
+
+
+Una vez registrado en ParseJS, debemos introducir el nombre de la base de datos de la app donde guardaremos el nombre de usuario y la contraseña de cada usuario que se registre en nuestra app.
+
+#![eje](http://whitehowler.ovh/ejemplo.png  "eje")
+
+
+Una vez introducido el nombre de la aplicación, nos saldrá una ventana parecida a esta: 
+
+#![key](http://whitehowler.ovh/keys.png  "key")
+
+De esta ventana nos interesa obtener el __Application ID__ y el __Javascript Key__ que son los que necesitaremos para poder trabajar con nuestro propio login. De manera opcional, podemos pasarle un último parámetro donde va el nombre de la sección al que accederá en caso de que el login sea incorrecto.
+
+###Inicializando el módulo.
+
+Una vez obtengamos estos dos valores, el siguiente paso es lanzar la siguiente orden.
+```
+mobincube.modules.initialize(idapp, javascriptkey, section, error)
+```
+
+
+
+El módulo SDK debe recibir tres parametros. El primero es el __Application ID__, seguido del __Javascript Key__ y finalmente debe recibir el nombre de la __sección__ a la que irá cuando el login sea correcto.
+
+
+```
+Ejemplo: mobincube.modules.initialize('NNJB8wHeBw06310WIK3BNsF2AZvYvTp58lz4u0Xh', 'zJLicjMd3CijyfylA1mHBYDq5sekLe0YH5OZQ2Iw', 'mainsection');
+Ejemplo: mobincube.modules.initialize('NNJB8wHeBw06310WIK3BNsF2AZvYvTp58lz4u0Xh', 'zJLicjMd3CijyfylA1mHBYDq5sekLe0YH5OZQ2Iw', 'mainsection', 'error section');
+```
+
+
+Una vez hecho eso, el resultado será el siguiente: 
+
+#![login](http://whitehowler.ovh/login.png  "login")
+
+
 
 

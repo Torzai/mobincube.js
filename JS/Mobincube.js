@@ -37,13 +37,13 @@ Action.prototype.openInterstitial = function () {
 Action.prototype.play = function (resourceName, boolean) {
     var on = false;
     if(boolean === true){   on = true;  };
-    this.setWindowLocation('play/{"resource":'+encodeURIComponent(resourceName)+',"loop":'+on+'}');
+    this.setWindowLocation('play/{"resource":"'+encodeURIComponent(resourceName)+'","loop":"'+on+'"}');
 }
 Action.prototype.stop = function (resourceName) {
-    this.setWindowLocation('stop/{"resource":'+encodeURIComponent(resourceName)+'}');
+    this.setWindowLocation('stop/{"resource":"'+encodeURIComponent(resourceName)+'"}');
 }
 Action.prototype.openPlayer = function (URL) {
-    this.setWindowLocation('player/{"resource":'+encodeURIComponent(URL)+'}');
+    this.setWindowLocation('player/{"resource":"'+encodeURIComponent(URL)+'"}');
 };
 
 
@@ -93,18 +93,11 @@ function Login() {
 
 
 /////////////////////////////////// Create a Template /////////////////////////////////////////////
-    this.activateTemplate = off;
+
     
     this.loginTemplate  = '<style>html,body{width:100%;height:100%;font-family:Tahoma, Geneva, sans-serif;} .login{ width:285px; height:285px; overflow:hidden; background:#DDDDDD;border-radius:6px;position:absolute;left:50%;top:50%;margin-left:-150px;margin-top:-142px;} .login  .title{width:298px;height:14px;padding-top:13px;padding-bottom:13px;font-size:14px;text-align:center;color:#FFFFFF;font-weight:bold;background:#d40066;margin-bottom:30px;border-top-right-radius:6px;border-top-left-radius:6px;} .login form{width:240px;height:auto;overflow:hidden;margin-left:auto;margin-right:auto;}.login form input[type=text], .login form input[type=password]{width:200px;font-size:12px;padding-top:14px;padding-bottom:14px;padding-left:40px;border:none;color:#bfbfbf; background:#FFFFFF; outline:none; margin:0;} .login form input[type=text]{border-top-left-radius:6px;border-top-right-radius:6px;margin-left: 15px;}.login form input[type=password]{border-bottom-left-radius:6px;border-bottom-right-radius:6px;margin-left: 15px;}.login form .enviar{width:240px;height:12px;display:block;padding-top:14px;padding-bottom:14px;border-radius:6px;background:#d40066;text-align:center;text-decoration:none;font-size:12px;font-weight:bold;color:#FFF;}.login .accountoptions{ width:240px; height:auto; overflow:hidden;padding-top:25px;padding-bottom:25px;font-size:10px;text-align:center;}.login .accountoptions .col{ width:100%;height:auto;float:left;} .login .accountoptions .col a{color:#676767;text-decoration:none;}</style><body><section class="login"><div class="title"></div><form action="#" method="post" enctype= "application/x-www-form-urlencoded"><input type="text" id="username" required placeholder="Username" data-icon="U"><input type="password" id="password" required placeholder="Password" data-icon="x"><div class="accountoptions"><div class="col"><a href="#" onclick="signup()">Create account</a></div></div><a href="#" class="enviar" id="enviar">Entrar</a></form></section></body>';
 
-
-///////////////////////////////// Insert this template in HTML /////////////////////////// 
-    
-    if(!this.activateTemplate === off){
-    
-    document.body.innerHTML = this.loginTemplate;
-
-        }
+    this.success;
         
 ////////////////////////////////  Default error login template ///////////////////////////
     this.error   = this.loginTemplate;
@@ -112,9 +105,15 @@ function Login() {
 
 ///////////////////////////////// Inicialize Parse Library ///////////////////////////////
 
-Login.prototype.initialize = function (api, key){
+Login.prototype.initialize = function (api, key, template, error){
     Parse.initialize(api,key);
-    this.activateTemplate = on;
+    this.success = template;
+    if(error === null){
+    this.error   = this.loginTemplate;
+    }else {
+    this.error = error;
+    }
+    document.body.innerHTML = this.loginTemplate;
 };
 
 /////////////////////////////  Login Function  //////////////////////////////////////////
