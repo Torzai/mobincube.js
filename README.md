@@ -11,6 +11,14 @@
  El __Protocolo Mobincube__ es un conjuto de reglas que permiten las interacciones entre la parte web de una App y el contenido nativo de la propia App. Nos permiten realizar las acciones nativas de una App desde una página web.
 
 
+### Empezando con el Protocolo Mobincube.
+
+El primer paso es crear un objeto llamado __mobincube__ al que llamaremos en cada una de las siguientes consultas a realizar.
+
+´´´
+    mobincube = new Mobincube();
+    
+´´´
 
 
 ###Tipos de Utilidades
