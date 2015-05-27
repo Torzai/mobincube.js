@@ -37,13 +37,13 @@ Action.prototype.openInterstitial = function () {
 Action.prototype.play = function (resourceName, boolean) {
     var on = false;
     if(boolean === true){   on = true;  };
-    this.setWindowLocation("play/{'resource':"+encodeURIComponent(resource)+",'loop':"+on+"}");
+    this.setWindowLocation("play/{'resource':"+encodeURIComponent(resourceName)+",'loop':"+on+"}");
 }
 Action.prototype.stop = function (resourceName) {
-    this.setWindowLocation("stop/{'resource':"+encodeURIComponent(resource)+"}");
+    this.setWindowLocation("stop/{'resource':"+encodeURIComponent(resourceName)+"}");
 }
 Action.prototype.openPlayer = function (URL) {
-    this.setWindowLocation("player/{'resource':"+encodeURIComponent(resource)+"}");
+    this.setWindowLocation("player/{'resource':"+encodeURIComponent(URL)+"}");
 };
 
 

@@ -197,7 +197,7 @@ JSON:
 }
 ```
 ```
-Ejemplo: mobincube.action.play(play, loop);
+Ejemplo: mobincube.action.play(resource, loop);
 ```
 ***Notas:*** El recurso audio a reproducir tiene que estar ya dentro de la App para que se pueda reproducir mediante el gestor de recursos.
 
@@ -213,7 +213,7 @@ Ejemplo: mobincube.action.play(play, loop);
 {"resource": null} // Parara todos los recursos audio que se estén reproduciendo
 ```
 ```
-Ejemplo: mobincube.action.stop(stop);
+Ejemplo: mobincube.action.stop(resource);
 Ejemplo: mobincube.action.stop();
 ```
 
