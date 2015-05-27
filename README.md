@@ -15,7 +15,9 @@
 
 El primer paso es crear un objeto llamado __mobincube__ al que llamaremos en cada una de las siguientes consultas a realizar.
 
-´mobincube = new Mobincube();´
+```
+mobincube = new Mobincube();
+```
 
 
 ###Tipos de Utilidades
